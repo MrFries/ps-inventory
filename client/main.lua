@@ -164,7 +164,6 @@ local function ToggleHotbar(toggle)
         [3] = PlayerData.items[3],
         [4] = PlayerData.items[4],
         [5] = PlayerData.items[5],
-        [41] = PlayerData.items[41],
     }
 
     SendNUIMessage({
@@ -819,12 +818,9 @@ end)
 
 RegisterKeyMapping('hotbar', 'Toggles keybind slots', 'keyboard', 'z')
 
-for i = 1, 6 do
+for i = 1, 5 do
     RegisterCommand('slot' .. i,function()
         if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() and not LocalPlayer.state.inv_busy then
-            if i == 6 then
-                i = Config.MaxInventorySlots
-            end
             TriggerServerEvent("inventory:server:UseItemSlot", i)
         end
     end, false)

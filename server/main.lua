@@ -2152,7 +2152,7 @@ QBCore.Commands.Add("resetinv", "Reset Inventory (Admin Only)", {{name="type", h
 	else
 		TriggerClientEvent('QBCore:Notify', source,  "Arguments not filled out correctly..", "error")
 	end
-end, "admin")
+end, "god")
 
 QBCore.Commands.Add("rob", "Rob Player", {}, false, function(source, args)
 	TriggerClientEvent("police:client:RobPlayer", source)
@@ -2193,6 +2193,16 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 					info.url = "https://cdn.discordapp.com/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png"
 				elseif QBCore.Shared.Items[itemData["name"]]["decay"] and QBCore.Shared.Items[itemData["name"]]["decay"] > 0 then
 					info.quality = 100
+				elseif itemData["name"] == "laptop_green" then
+					info.uses = 3
+				elseif itemData["name"] == "laptop_blue" then
+					info.uses = 3
+				elseif itemData["name"] == "laptop_red" then
+					info.uses = 3
+				elseif itemData["name"] == "laptop_gold" then
+					info.uses = 3
+				elseif itemData["name"] == "usb_grey" then
+					info.uses = 3
 				end
 
 				if AddItem(id, itemData["name"], amount, false, info) then
@@ -2206,7 +2216,7 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 	else
 		QBCore.Functions.Notify(source,  "Player Is Not Online", "error")
 	end
-end, "admin")
+end, "god")
 
 QBCore.Commands.Add("randomitems", "Give Random Items (God Only)", {}, false, function(source, _)
 	local filteredItems = {}
@@ -2236,7 +2246,7 @@ QBCore.Commands.Add('clearinv', 'Clear Players Inventory (Admin Only)', { { name
     else
         QBCore.Functions.Notify(source, "Player not online", 'error')
     end
-end, 'admin')
+end, 'god')
 
 -- item
 
